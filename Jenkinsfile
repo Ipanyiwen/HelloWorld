@@ -44,11 +44,12 @@
 
 pipeline {
     agent any
+    environment {
+                DISABLE_AUTH = 'true'
+                DB_ENGINE    = 'sqlite'
+            }
     stages {
-        environment {
-            DISABLE_AUTH = 'true'
-            DB_ENGINE    = 'sqlite'
-        }
+
         stage('Example') {
             steps {
                 sh 'printenv'
