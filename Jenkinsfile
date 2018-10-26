@@ -45,13 +45,13 @@
 pipeline {
     agent any
     stages {
+        environment {
+            DISABLE_AUTH = 'true'
+            DB_ENGINE    = 'sqlite'
+        }
         stage('Example') {
             steps {
-                input {
-                    message "Does the staging environment look ok?"
-                    ok "yes"
-                    submitter "alice,bob"
-                }
+                sh 'printenv'
             }
         }
     }
