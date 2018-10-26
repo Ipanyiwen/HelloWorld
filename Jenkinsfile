@@ -47,7 +47,11 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                input "Does the staging environment look ok?"
+                input {
+                    message "Does the staging environment look ok?"
+                    ok "yes"
+                    submitter "alice,bob"
+                }
             }
         }
     }
