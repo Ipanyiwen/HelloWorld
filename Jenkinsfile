@@ -16,18 +16,13 @@ pipeline {
             }
         }
 
-        stage('Example') {
+        stage('deploy') {
             agent any
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
+           timeout(time: 7, unit: 'SECONDS') {
+                input message: 'Do you want to deploy?', submitter: 'ops'
+           }
             steps {
-                echo "Hello, ${PERSON}, nice to meet you."
+                echo "Hello, world, nice to meet you."
             }
         }
     }
