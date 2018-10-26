@@ -1,7 +1,7 @@
 pipeline {
     agent { docker { image 'maven:3.3.3' } }
      triggers {
-        cron('1-60 * * * *')
+        cron('0-59 * * * *')
     }
     stages {
         stage('build') {
